@@ -1,23 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import NavBar from "./components/NavBar/NavBar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Men from "./components/Men/Men";
+import Women from "./components/Women/Women";
+import Children from "./components/Children/Children";
+import Home from "./components/Home/Home";
+import ProductItem from "./components/Product/ProductItem";
+
+function Error() {
+  return <h2>404 Error. Page not found</h2>;
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/men">
+            <Men />
+          </Route>
+          <Route path="/men/:id">
+            <ProductItem />
+          </Route>
+          <Route exact path="/women">
+            <Women />
+          </Route>
+          <Route path="/women/:id">
+            <ProductItem />
+          </Route>
+          <Route exact path="/children">
+            <Children />
+          </Route>
+          <Route path="/children/:id">
+            <ProductItem />
+          </Route>
+          <Route path="*">
+            <Error />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
