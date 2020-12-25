@@ -76,7 +76,7 @@ const NavBar = () => {
           <Typography className={classes.title} variant="h6" noWrap>
             Adidas
           </Typography>
-          <Link to="/">Home</Link>
+          <Link to="/shoe-store">Home</Link>
           <Link to="/men">Men</Link>
           <Link to="/women">Women</Link>
           <Link to="/children">Children</Link>
